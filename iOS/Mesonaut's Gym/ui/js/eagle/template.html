@@ -1,0 +1,188 @@
+<html>
+<head>
+<title></title>
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport"
+	content="user-scalable=no, width=device-width,  initial-scale=1, minimum-scale=1,  maximum-scale=1" />
+
+<style>
+* {
+	-webkit-user-drag: none;
+	-webkit-touch-callout: none;
+	/* prevent callout to copy image, etc when tap to hold */
+	-webkit-text-size-adjust: none;
+	/* prevent webkit from resizing text to fit */
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	/* make transparent link [ remove highlighting ] selection, adjust last value opacity 0 to 1.0 */
+}
+</style>
+<style>
+canvas {
+	border: 0px solid black;
+}
+</style>
+<style>
+.col2 * {
+	width: 100%;
+}
+
+.input {
+	width: 98%
+}
+
+body {
+	font-size: 100%
+}
+
+body {
+	font-family: Arial;
+}
+
+label {
+	font-size: 100%
+}
+
+label {
+	font-family: Arial;
+}
+
+p {
+	font-size: 100%
+}
+
+p {
+	font-family: Arial;
+}
+
+input {
+	font-size: 100%
+}
+
+input {
+	font-family: Arial;
+}
+</style>
+
+</head>
+<body id="body" bgcolor="#9bc9d6" onkeydown="handleKey(event)"
+	onclick="" onload="init()"
+	onMouseDown="if(view != undefined) view.down(event);"
+	onTouchMove="if(view != undefined) view.move(event); "
+	onTouchEnd="if(view != undefined)  view.touchup(event); "
+	onTouchStart="if(view != undefined)  view.touchdown(event); "
+	onMouseUp="if(view != undefined)  view.up(event);"
+	onMouseMove="if(view != undefined) view.move(event);">
+	<script type="text/javascript" src="js/eagle/globals.js"></script>
+	<script type="text/javascript" src="js/eagle/timer.js"></script>
+	<script type="text/javascript" src="js/eagle/tools.js"></script>
+	<script type="text/javascript" src="js/eagle/part.js"></script>
+	<script type="text/javascript" src="js/eagle/bone.js"></script>
+	<script type="text/javascript" src="js/eagle/thing.js"></script>
+	<script type="text/javascript" src="js/eagle/thingcontainer.js"></script>
+	<script type="text/javascript" src="js/eagle/ellipse.js"></script>
+	<script type="text/javascript" src="js/eagle/boundingcircle.js"></script>
+	<script type="text/javascript" src="js/eagle/triangle.js"></script>
+	<script type="text/javascript" src="js/eagle/line.js"></script>
+	<script type="text/javascript" src="js/eagle/rectangle.js"></script>
+	<script type="text/javascript" src="js/eagle/quadrangle.js"></script>
+	<script type="text/javascript" src="js/eagle/imagething.js"></script>
+	<script type="text/javascript" src="js/eagle/text.js"></script>
+	<script type="text/javascript" src="js/eagle/partanimation.js"></script>
+	<script type="text/javascript" src="js/eagle/compositeanimation.js"></script>
+	<script type="text/javascript" src="js/eagle/collisionhandler.js"></script>
+	<script type="text/javascript" src="js/eagle/coordinatetap.js"></script>
+	<script type="text/javascript" src="js/eagle/modell.js"></script>
+	<script type="text/javascript" src="js/eagle/view.js"></script>
+	<script type="text/javascript" src="js/eagle/eagle.js"></script>
+
+	<script type="text/javascript">
+		var view;
+	</script>
+	<img id="bgimg" width="0px" height="0px" />
+
+	<div id="all">
+
+		<canvas id="canvas">
+		</canvas>
+
+	</div>
+
+	<script type="text/javascript">
+		var all = document.getElementById("all");
+		var imgi = 0;
+		var canvaswidth, canvasheight;
+		var canvas = document.getElementById("canvas");
+		var w, h, scale;
+		var phonegap = false;
+
+		function saveImg() {
+			var dataURL = canvas.toDataURL('image/png');
+			window.open(dataURL);
+		};
+
+		function handleKey(event) {
+			if (event.keyCode == 189)
+				biz.zoomOut();
+			if (event.keyCode == 187)
+				biz.zoomIn();
+		}
+
+		noPhoneGapSetup = function() {
+			if (w == undefined)
+				setup();
+		}
+
+		var deviceReady = function() {
+			setTimeout(setup, 200);
+		}
+		init = function() {
+			document.addEventListener("deviceready", deviceReady, true);
+		}
+
+		setup = function() {
+			w = window.innerWidth;
+			h = window.innerHeight;
+
+			canvaswidth = w;
+			canvasheight = h;
+
+			startMe();
+		}
+
+		sign = function(i) {
+			if (i < 0)
+				return -1;
+			if (i > 0)
+				return 1;
+			return 0;
+		}
+
+		var thing;
+
+		function rotateThing() {
+			thing.rotate(6);
+			setTimeout(rotateThing, 300);
+		}
+
+		startMe = function() {
+			w = window.innerWidth;
+			h = window.innerHeight;
+
+			scale = Math.min((w) / (2 * 960), (h) / (2 * 640));
+			document.getElementById("canvas").setAttribute("style",
+					"position:absolute; top:" + 0 + "px; left: " + 0 + "px;");
+			document.getElementById("canvas")
+					.setAttribute("width", canvaswidth);
+			document.getElementById("canvas").setAttribute("height",
+					canvasheight);
+
+			var fileref = document.createElement('script')
+			fileref.setAttribute("type", "text/javascript")
+			fileref.setAttribute("src", "setup.js");
+			document.getElementsByTagName("head")[0].appendChild(fileref)
+		}
+		
+		setTimeout(noPhoneGapSetup, 400);
+	</script>
+</html>

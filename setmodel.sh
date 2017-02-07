@@ -1,0 +1,45 @@
+export PMML='<?xml version="1.0"?>
+<PMML version="4.1" xmlns="http://www.dmg.org/PMML-4_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dmg.org/PMML-4_2 http://www.dmg.org/v4-2/pmml-4-1.xsd">
+<Header copyright="Copyright (c) 2015 emil" description="RPart Decision Tree Model">
+<Extension name="user" value="emil" extender="R/PMML"/>
+<Application name="R/PMML" version="1.4"/>
+<Timestamp>2015-02-17 13:42:44</Timestamp>
+</Header>
+<DataDictionary numberOfFields="2">
+<DataField name="Color" dataType="string">
+<Interval closure="closedClosed" leftMargin="0" rightMargin="1"/>
+</DataField>
+<DataField name="heartrate" optype="continuous" dataType="double">
+<Interval closure="closedClosed" leftMargin="0" rightMargin="240"/>
+</DataField>
+</DataDictionary>
+<TreeModel modelName="Model" functionName="classification" algorithmName="rpart" splitCharacteristic="binarySplit" missingValueStrategy="defaultChild">
+<MiningSchema>
+<MiningField name="Color" usageType="predicted"/>
+<MiningField name="heartrate" usageType="active"/>
+</MiningSchema>
+<Output>
+<OutputField name="Predicted_Color" optype="categorical" dataType="string" feature="predictedValue"/>
+<OutputField name="Probability_0" optype="continuous" dataType="double" feature="probability" value="0"/>
+<OutputField name="Probability_1" optype="continuous" dataType="double" feature="probability" value="1"/>
+</Output>
+<Node id="1" score="0" recordCount="24" defaultChild="2">
+<True/>
+<ScoreDistribution value="0x80FF0000" recordCount="19" confidence="2171.0"/>
+<ScoreDistribution value="0x8000FF00" recordCount="5" confidence="0.0"/>
+<Node id="2" score="0x80FF0000" recordCount="17">
+<SimplePredicate field="heartrate" operator="greaterOrEqual" value="120"/>
+<ScoreDistribution value="0x80FF0000" recordCount="17" confidence="1"/>
+<ScoreDistribution value="0x8000FF00" recordCount="0" confidence="0"/>
+</Node>
+<Node id="3" score="0x8000FF00" recordCount="7">
+<SimplePredicate field="heartrate" operator="lessThan" value="120"/>
+<ScoreDistribution value="0x80FF0000" recordCount="2" confidence="0.0"/>
+<ScoreDistribution value="0x8000FF00" recordCount="5" confidence="2663.0"/>
+</Node>
+</Node>
+</TreeModel>
+</PMML>'
+echo $PMML>model.tmp
+curl -X POST -d @model.tmp http://esiemes-5-publicsl-vh6kf786087z-2063065161.us-west-1.elb.amazonaws.com/model
+rm model.tmp

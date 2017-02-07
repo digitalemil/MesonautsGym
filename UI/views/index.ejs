@@ -1,0 +1,109 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Mesosphere DC/OS AppStudio</title>
+
+</head>
+<body bgcolor="#FFFFFF">
+	<div id="alldiv">
+		<div>
+			<img id="bg" style="position: absolute; top: 0px; left: 0px;"
+				src="images/bgimg.jpg"> </img>
+		</div>
+		<div id="text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+			<center>
+			<h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+					<%= name %>
+						<p><p>
+			
+						<p>
+					<button onclick="location.href='menu/data.html'" style="width: 256px; font-size: 24px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Enter Data</button>  
+					<p> 
+					<button style="width: 256px; font-size: 24px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" onclick="location.href='menu/cassandra.html'">Execute CQL</button>
+					<p>
+					<button style="width: 256px; font-size: 24px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" onclick="location.href='menu/map.html'">Location Data</button>						
+					<p>
+					<button style="width: 256px; font-size: 24px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" onclick="location.href='menu/zeppelin.html'">Download Notebook</button>						
+					<p>
+					<button style="width: 256px; font-size: 24px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" onclick="window.open('http://draw.io?url=http://digitalemil.de/DCOS-AppStudio.xml')">See Architecture</button>						
+					<p>
+					<input style="font-size: 24px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" type="text" name="email" id="email" value="" />
+					<p>
+					<button style="width: 256px; font-size: 24px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" onclick="sendEMailInvite()">Send eMail Invite</button>						
+					<p>
+					<button style="width: 256px; font-size: 24px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" onclick="location.href='/'">Show Widgets</button>							
+			</h2>
+			</center>
+			</br>
+		</div>
+	</div>
+	<script>
+		var w = window.innerWidth;
+		var h = window.innerHeight;
+		var sX = w / 1024;
+		var sY = h / 768;
+		var bgh = (768 * window.innerWidth / 1024);
+		var fields = 1;
+		var totalfields= 1;
+		var todelete = 1;
+
+		var bg = document.getElementById("bg");
+		bg.setAttribute("style",
+				"position:absolute; top:0px; left:0px; width: "
+						+ window.innerWidth + "px; height: " + bgh + "px;");
+		var text = document.getElementById("text");
+		text.setAttribute("style", "style=font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; position:absolute; top:" + (320 * sY)
+				+ "px; left:" + (((960 - 512 - 140) / 2) * sX) + "px; width: "
+				+ (512 * sX * 1.5) + "px; height: " + (256 * sY * 1.5) + "px;");
+
+		function  sendEMailInvite() {
+			let mailaddress= document.getElementById("email").value;
+			v= location.href;
+            v= v.substring(0, v.lastIndexOf('/'));
+			
+			let o= new Object();
+			o.mailaddress= mailaddress;
+			o.server= v;
+			postJSON(JSON.stringify(o));
+		}
+
+function postJSON(send) {
+	req = false;
+	// branch for native XMLHttpRequest object
+	var url = "mail";
+	console.log("Load url: " + url);
+	if (window.XMLHttpRequest) {
+		try {
+			req = new XMLHttpRequest();
+		} catch (e) {
+			req = false;
+		}
+		// branch for IE/Windows ActiveX version
+	} else {
+		if (window.ActiveXObject) {
+			try {
+				req = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch (e) {
+				try {
+					req = new ActiveXObject("Microsoft.XMLHTTP");
+				} catch (e) {
+					req = false;
+				}
+			}
+		}
+	}
+	if (req) {
+		req.onreadystatechange = new function() { };
+		req.open("POST", url, true);
+		req.send(send);
+	} else {
+		alert("req== false");
+	}
+
+}
+
+	</script>
+
+</body>
+</html>
