@@ -1,1 +1,1 @@
-curl -X POST -d '' http://esiemes-5-publicsl-vh6kf786087z-2063065161.us-west-1.elb.amazonaws.com/model
+curl -X POST -d '' http://esiemes-e-publicsl-1vm0wocobp01c-1500458912.eu-central-1.elb.amazonaws.com/model

@@ -65,17 +65,22 @@ function View(canvas, m, desiredFps) {
 }
 
 View.prototype.init = function() {
+    
 	services = new Services();
 	services.setView(this);
 	services.getView().enabled = true;
+    
 	this.font = "bold " + Math.round(16 * scale) + "px sans-serif";
 	this.timer = new MyTimer(itsTime);
 	//fpstimer = new MyTimer(fpsTime);
+    
 	services.getView().update();
 	//alert("Timer: " + (Math.round(1000 / this.dfps)));
-    this.timer.start(Math.round(1000 / this.dfps));
+    //
+    this.timer.start(500);
 	//fpstimer.start(1000);
 	this.n = 0;
+
 };
 
 View.prototype.paintThing = function(d, di, len, textandfont) {
@@ -196,21 +201,24 @@ View.prototype.paintPrep = function() {
 };
 
 View.prototype.paint = function() {
-	var now = (new Date()).getTime();
+   var now = (new Date()).getTime();
 	this.modell.update();
 	d1 += (new Date()).getTime() - now;
 	now = (new Date()).getTime();
+   
 	this.paintPrep();
-	d2 += (new Date()).getTime() - now;
+   
+    d2 += (new Date()).getTime() - now;
+    
 	var s = this.modell.moveToOtherScreen();
-	// console.log("s: "+s);
-	if (s != Screen.STAYONSCREEN) {
+
+    if (s != Screen.STAYONSCREEN) {
 		for (var i = 0; i < this.textures.length; i++) {
 			this.textures[i] = null;
 		}
 		this.modell.showScreen(s);
 	}
-	this.ctx.fillStyle = RGB2HTML(this.modell.getBackgroundColor());
+    this.ctx.fillStyle = RGB2HTML(this.modell.getBackgroundColor());
 	this.ctx.fillRect(0, 0, width, height);
 	var ft = false;
 	now = (new Date()).getTime();
@@ -248,7 +256,6 @@ View.prototype.paint = function() {
 		}
 	}
 	d4 += (new Date()).getTime() - now;
-
 	this.ctx.font = this.font;
 	this.ctx.fillStyle = "#592b13";
 	this.ctx.strokeStyle = "#592b13";

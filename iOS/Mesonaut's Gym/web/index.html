@@ -2,7 +2,7 @@
 <HTML>
    <HEAD>
       <TITLE>
-         Horton's Gym'
+         Mesonaut's Gym
       </TITLE>
    </HEAD>
 <BODY bgcolor="#9E49ED">
@@ -12,7 +12,7 @@
    Let's have a look at the architecure:<br>
    <img src=""/>
    <br>
-   Your phone is the sensor we are going to use. The server-side will run on your Mac Book! For detailed instructions to set Hadoop up on your Mac please see the instructions on the bar called "More" below. Don't be worried your data is not going to end up anywhere you do not want it to be. The application will only send the data to a server you specify on the bar labeled "DC/OS". Here you point the app to the Hadoop installation on your Mac like: "http://127.0.0.1:8181". For more details on privacy please check-out the bar labeled "More".<br>
+   Your phone is the sensor we are going to use. For detailed instructions to set DC/OS up on please see the instructions on the bar called "More" below. Don't be worried your data is not going to end up anywhere you do not want it to be. The application will only send the data to a server you specify on the bar labeled "DC/OS". Here you point the app to your cluster installation e.g. like: "http://127.0.0.1:8181". For more details on privacy please check-out the bar labeled "More".<br>
    So let's get started: The app is going to collect heart-rate and location data and will send it to the server side in the cloud. Here's an illustration:
  <img src=""/>
  But we want to do even more! Let's add some machine learning (ml) to the picture. Out-of-the-box comes a kind of "Hello World" of ml model. It's a (very) simple model which tells us in real-time that our heart-rate is too high or ok. This is also where the fun starts: You can develop your own models based on your own data and deploy them to your Mac. The out-of-the-box model was created using only a subset of the data: id and heart-rate. A good exercise would be to use Apache pig to load and transform the data until you have something like this:<br>
@@ -35,8 +35,7 @@
     ...<br>
     <br>
     </font>
-    If you have a lot of data an Apache Pig script or a map/reduce job is a good way to do this. This indeed is a typical use-case of Hadoop in ml: You use Hadoop to collect, clean and transform the data. The model itself quite often is created outside of Hadoop but then finally again deployed into Hadoop.<br>
-    But back to our data. Bring up R or SAS Miner or what have you. We are going use R here but it really does not matter as long as it can export PMML (Predictive Model Markup Language).
+    Bring up R or SAS Miner or what have you. We are going use R here but it really does not matter as long as it can export PMML (Predictive Model Markup Language).
     Run the follwing R program and it will create your model based on your supoervised data:<br>
     <font face="courier">
 <br>library(rpart)<br>
@@ -49,15 +48,14 @@
         app.name = "R/PMML", dataset = hrdata), file = "hrmodel.pmml")<br><br>
 
         </font>
-        The Storm topology deployed within Horton's Gym has a PMML-Bolt built-in and will evaluate your model every time a message is received.<br>
-        Now that's pretty awesome, isn't it? We can collect sensor data and anaylse it in real-time which opens vast possibilties for pre-active maintenance of field equipment, intelligent connected cars and many many more interesting use-case.<br>
-        Have fun experimenting with this! For details on how to upload your model look at the tutorial for your Mac.<br>
+        Mesonaut"s Gym has a PMML-Microservice built-in and will evaluate your model every time a message is received.<br>
+        Now that's pretty awesome, isn't it? We can collect sensor data and anaylse it in real-time which opens vast possibilties for proactive maintenance of field equipment, intelligent connected cars and many many more interesting use-case.<br>
+        Have fun experimenting with this! For details on how to upload your model look check out the tutorial.<br>
         <br>
-        By the way this is all 100% open source: I'm using HDP from Hortonworks and you can find the other parts on GitHub:
+        By the way this is all 100% open source:
         <br>
-        https://github.com/digitalemil/HDPDemoStudio.git<br>
-        https://github.com/digitalemil/HortonsGym.git<br>
-        https://github.com/digitalemil/HortonsGym-iOS.git<br>
+        https://github.com/digitalemil/DCOS-AppStudio<br>
+        https://github.com/digitalemil/MesonautsGym<br>
         <br>
         Happy hacking!
 </p>

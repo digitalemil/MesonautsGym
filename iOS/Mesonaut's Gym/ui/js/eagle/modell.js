@@ -11,7 +11,10 @@ Modell.prototype.init= function(n) {
 };
 
 Modell.prototype.moveToOtherScreen= function() {
-    return Screen.getActiveScreen().moveToOtherScreen();
+    if(Screen.getActiveScreen()!= null)
+        return Screen.getActiveScreen().moveToOtherScreen();
+    else
+        return Screen.STAYONSCREEN;
 };
 
 Modell.prototype.getBackgroundColor= function() {
