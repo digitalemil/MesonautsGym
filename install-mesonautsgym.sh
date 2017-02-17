@@ -1,4 +1,16 @@
 #!/bin/bash
+read -p "Install services? (y/n) " -n1 -s c
+if [ "$c" = "y" ]; then
+	echo yes
+	./setup-marathon-lb.sh
+	dcos package install --yes cassandra
+	dcos package install --yes kafka
+	dcos package install --yes elasticsearch
+	dcos marathon app add kibana.json
+	read -p "Press any key when the services are started." -n1 -s 
+else
+	echo no
+fi
 
 if  [[ $1 == http* ]] 
 then

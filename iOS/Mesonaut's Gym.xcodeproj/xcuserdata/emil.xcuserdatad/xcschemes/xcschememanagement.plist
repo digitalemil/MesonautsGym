@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Mesonaut's Gym for Watch (Notification).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Mesonaut's Gym for Watch.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Mesonaut's Gym.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +22,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>200A1A451E57560500521BD8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>20F0E9D91E45BE7B00C48414</key>
 		<dict>
 			<key>primary</key>

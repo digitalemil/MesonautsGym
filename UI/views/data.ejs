@@ -50,7 +50,32 @@
 
 		function setEventTime() {
 			var d= new Date();
-            		var dt= d.getFullYear()+"-"+(d.getUTCMonth()+1)+"-"+d.getUTCDate()+"T"+d.getUTCHours()+":"+d.getUTCMinutes()+":"+(d.getUTCMilliseconds()/1000.0)+"Z";
+			let day= d.getUTCDate();
+			let daystring= ""+day;
+			
+  			if(day< 10)
+    				daystring="0"+daystring;
+  			let month= d.getUTCMonth()+1;
+  			let monthstring= ""+month;
+  			if(month< 10)
+    				monthstring="0"+monthstring;
+            		
+		        let hour= d.getUTCHours();
+			let hourstring= ""+hour;
+  			if(hour< 10)
+    				hourstring="0"+hourstring;
+            		
+			let minute= d.getUTCMinutes();
+			let minutestring= ""+minute;
+  			if(minute< 10)
+    				minutestring="0"+minutestring;
+            		    
+			let second= d.getUTCMilliseconds()/1000.0;
+			let secondstring= ""+second;
+  			if(second< 10)
+    				secondstring="0"+secondstring
+			    
+			var dt= d.getFullYear()+"-"+monthstring+"-"+daystring+"T"+hourstring+":"+minutestring+":"+secondstring+"Z";
 			ts.value= dt;
 		};
 

@@ -40,6 +40,7 @@ CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UISwitch *locswitch;
 @end
 
+int nbpms= 0;
 @implementation SecondViewController
 - (IBAction)locswitchAction:(id)sender {
     if(trackloc) {
@@ -538,10 +539,13 @@ CLLocationManager *locationManager;
  */
 
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary *)message replyHandler:(nonnull void (^)(NSDictionary * __nonnull))replyHandler {
-    NSString *value = [message objectForKey:@"bpm"];
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        NSString *value = [message objectForKey:@"bpm"];
+        
         int userHR= [value intValue];
+   //     userHR= nbpms;
+        nbpms++;
         [self.bpm setText:[NSString stringWithFormat:@"%i bpm", userHR]];
         
         dateString = [formatter stringFromDate:[NSDate date]];

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200A1A4C1E57560500521BD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200A1A4B1E57560500521BD8 /* Assets.xcassets */; };
+		200A1A531E57560500521BD8 /* Mesonaut's Gym for Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 200A1A521E57560500521BD8 /* Mesonaut's Gym for Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		200A1A631E57560500521BD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200A1A621E57560500521BD8 /* Assets.xcassets */; };
+		200A1A681E57560600521BD8 /* Mesonaut's Gym for Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 200A1A461E57560500521BD8 /* Mesonaut's Gym for Watch.app */; };
+		200A1A711E5756E500521BD8 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 200A1A701E5756E500521BD8 /* Interface.storyboard */; };
+		200A1A741E57573B00521BD8 /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 200A1A731E57573B00521BD8 /* ExtensionDelegate.m */; };
+		200A1A791E57574400521BD8 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 200A1A761E57574400521BD8 /* InterfaceController.m */; };
+		200A1A7A1E57574400521BD8 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 200A1A781E57574400521BD8 /* NotificationController.m */; };
+		200A1A7D1E57576200521BD8 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200A1A7C1E57576200521BD8 /* HealthKit.framework */; };
 		200FF8871E47C16D0085107C /* cloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 200FF8831E47C16D0085107C /* cloud@2x.png */; };
 		200FF8881E47C16D0085107C /* cloud@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 200FF8841E47C16D0085107C /* cloud@3x.png */; };
 		200FF8891E47C16D0085107C /* heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 200FF8851E47C16D0085107C /* heart@2x.png */; };
@@ -24,6 +33,7 @@
 		2079D0931E45C0690037E038 /* NewsPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2079D08D1E45C0690037E038 /* NewsPrivacyViewController.m */; };
 		2079D0961E45C0E20037E038 /* ThirdViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 2079D0941E45C0E20037E038 /* ThirdViewController.h */; };
 		2079D0971E45C0E20037E038 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2079D0951E45C0E20037E038 /* ThirdViewController.m */; };
+		2092E2C31E579C7D00F83D45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200A1A4B1E57560500521BD8 /* Assets.xcassets */; };
 		20AB829D1E4652DA0004D885 /* mesonaut@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20AB82971E4652DA0004D885 /* mesonaut@2x.png */; };
 		20AB829E1E4652DA0004D885 /* mesonaut@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20AB82981E4652DA0004D885 /* mesonaut@3x.png */; };
 		20AB829F1E4652DA0004D885 /* mesonautgreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20AB82991E4652DA0004D885 /* mesonautgreen@2x.png */; };
@@ -43,7 +53,65 @@
 		20F0E9F01E45BE7B00C48414 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20F0E9EE1E45BE7B00C48414 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		200A1A541E57560500521BD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20F0E9D21E45BE7B00C48414 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 200A1A511E57560500521BD8;
+			remoteInfo = "Mesonaut's Gym for Watch Extension";
+		};
+		200A1A651E57560600521BD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20F0E9D21E45BE7B00C48414 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 200A1A451E57560500521BD8;
+			remoteInfo = "Mesonaut's Gym for Watch";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		200A1A671E57560600521BD8 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				200A1A681E57560600521BD8 /* Mesonaut's Gym for Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		200A1A6E1E57560600521BD8 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				200A1A531E57560500521BD8 /* Mesonaut's Gym for Watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		200A1A461E57560500521BD8 /* Mesonaut's Gym for Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mesonaut's Gym for Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		200A1A4B1E57560500521BD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		200A1A4D1E57560500521BD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		200A1A521E57560500521BD8 /* Mesonaut's Gym for Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Mesonaut's Gym for Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		200A1A581E57560500521BD8 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		200A1A621E57560500521BD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		200A1A641E57560500521BD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		200A1A701E5756E500521BD8 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
+		200A1A721E57573B00521BD8 /* ExtensionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtensionDelegate.h; sourceTree = "<group>"; };
+		200A1A731E57573B00521BD8 /* ExtensionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
+		200A1A751E57574400521BD8 /* InterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		200A1A761E57574400521BD8 /* InterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		200A1A771E57574400521BD8 /* NotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
+		200A1A781E57574400521BD8 /* NotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
+		200A1A7B1E57576100521BD8 /* Mesonaut's Gym for Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Mesonaut's Gym for Watch Extension.entitlements"; sourceTree = "<group>"; };
+		200A1A7C1E57576200521BD8 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.1.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		200FF8831E47C16D0085107C /* cloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud@2x.png"; sourceTree = "<group>"; };
 		200FF8841E47C16D0085107C /* cloud@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud@3x.png"; sourceTree = "<group>"; };
 		200FF8851E47C16D0085107C /* heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart@2x.png"; sourceTree = "<group>"; };
@@ -87,6 +155,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		200A1A4F1E57560500521BD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				200A1A7D1E57576200521BD8 /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20F0E9D71E45BE7B00C48414 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -102,9 +178,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		200A1A471E57560500521BD8 /* Mesonaut's Gym for Watch */ = {
+			isa = PBXGroup;
+			children = (
+				200A1A701E5756E500521BD8 /* Interface.storyboard */,
+				200A1A4B1E57560500521BD8 /* Assets.xcassets */,
+				200A1A4D1E57560500521BD8 /* Info.plist */,
+			);
+			path = "Mesonaut's Gym for Watch";
+			sourceTree = "<group>";
+		};
+		200A1A561E57560500521BD8 /* Mesonaut's Gym for Watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				200A1A7B1E57576100521BD8 /* Mesonaut's Gym for Watch Extension.entitlements */,
+				200A1A721E57573B00521BD8 /* ExtensionDelegate.h */,
+				200A1A731E57573B00521BD8 /* ExtensionDelegate.m */,
+				200A1A751E57574400521BD8 /* InterfaceController.h */,
+				200A1A761E57574400521BD8 /* InterfaceController.m */,
+				200A1A771E57574400521BD8 /* NotificationController.h */,
+				200A1A781E57574400521BD8 /* NotificationController.m */,
+				200A1A621E57560500521BD8 /* Assets.xcassets */,
+				200A1A641E57560500521BD8 /* Info.plist */,
+				200A1A571E57560500521BD8 /* Supporting Files */,
+			);
+			path = "Mesonaut's Gym for Watch Extension";
+			sourceTree = "<group>";
+		};
+		200A1A571E57560500521BD8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				200A1A581E57560500521BD8 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		2079D07D1E45BFAB0037E038 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				200A1A7C1E57576200521BD8 /* HealthKit.framework */,
 				2079D0821E45BFB80037E038 /* WatchConnectivity.framework */,
 				2079D0831E45BFB80037E038 /* WatchKit.framework */,
 				2079D0841E45BFB80037E038 /* WebKit.framework */,
@@ -118,6 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				20F0E9DC1E45BE7B00C48414 /* Mesonaut's Gym */,
+				200A1A471E57560500521BD8 /* Mesonaut's Gym for Watch */,
+				200A1A561E57560500521BD8 /* Mesonaut's Gym for Watch Extension */,
 				20F0E9DB1E45BE7B00C48414 /* Products */,
 				2079D07D1E45BFAB0037E038 /* Frameworks */,
 			);
@@ -127,6 +241,8 @@
 			isa = PBXGroup;
 			children = (
 				20F0E9DA1E45BE7B00C48414 /* Mesonaut's Gym.app */,
+				200A1A461E57560500521BD8 /* Mesonaut's Gym for Watch.app */,
+				200A1A521E57560500521BD8 /* Mesonaut's Gym for Watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,6 +299,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		200A1A451E57560500521BD8 /* Mesonaut's Gym for Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 200A1A6F1E57560600521BD8 /* Build configuration list for PBXNativeTarget "Mesonaut's Gym for Watch" */;
+			buildPhases = (
+				200A1A441E57560500521BD8 /* Resources */,
+				200A1A6E1E57560600521BD8 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				200A1A551E57560500521BD8 /* PBXTargetDependency */,
+			);
+			name = "Mesonaut's Gym for Watch";
+			productName = "Mesonaut's Gym for Watch";
+			productReference = 200A1A461E57560500521BD8 /* Mesonaut's Gym for Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		200A1A511E57560500521BD8 /* Mesonaut's Gym for Watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 200A1A6D1E57560600521BD8 /* Build configuration list for PBXNativeTarget "Mesonaut's Gym for Watch Extension" */;
+			buildPhases = (
+				200A1A4E1E57560500521BD8 /* Sources */,
+				200A1A4F1E57560500521BD8 /* Frameworks */,
+				200A1A501E57560500521BD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mesonaut's Gym for Watch Extension";
+			productName = "Mesonaut's Gym for Watch Extension";
+			productReference = 200A1A521E57560500521BD8 /* Mesonaut's Gym for Watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		20F0E9D91E45BE7B00C48414 /* Mesonaut's Gym */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20F0E9F41E45BE7B00C48414 /* Build configuration list for PBXNativeTarget "Mesonaut's Gym" */;
@@ -190,10 +340,12 @@
 				20F0E9D61E45BE7B00C48414 /* Sources */,
 				20F0E9D71E45BE7B00C48414 /* Frameworks */,
 				20F0E9D81E45BE7B00C48414 /* Resources */,
+				200A1A671E57560600521BD8 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				200A1A661E57560600521BD8 /* PBXTargetDependency */,
 			);
 			name = "Mesonaut's Gym";
 			productName = "Mesonaut's Gym";
@@ -209,6 +361,21 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = digitalemil.de;
 				TargetAttributes = {
+					200A1A451E57560500521BD8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = L3G5AY77GM;
+						ProvisioningStyle = Automatic;
+					};
+					200A1A511E57560500521BD8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = L3G5AY77GM;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit.watchos = {
+								enabled = 1;
+							};
+						};
+					};
 					20F0E9D91E45BE7B00C48414 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = L3G5AY77GM;
@@ -235,11 +402,31 @@
 			projectRoot = "";
 			targets = (
 				20F0E9D91E45BE7B00C48414 /* Mesonaut's Gym */,
+				200A1A451E57560500521BD8 /* Mesonaut's Gym for Watch */,
+				200A1A511E57560500521BD8 /* Mesonaut's Gym for Watch Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		200A1A441E57560500521BD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				200A1A4C1E57560500521BD8 /* Assets.xcassets in Resources */,
+				200A1A711E5756E500521BD8 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		200A1A501E57560500521BD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2092E2C31E579C7D00F83D45 /* Assets.xcassets in Resources */,
+				200A1A631E57560500521BD8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20F0E9D81E45BE7B00C48414 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -267,6 +454,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		200A1A4E1E57560500521BD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				200A1A741E57573B00521BD8 /* ExtensionDelegate.m in Sources */,
+				200A1A791E57574400521BD8 /* InterfaceController.m in Sources */,
+				200A1A7A1E57574400521BD8 /* NotificationController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20F0E9D61E45BE7B00C48414 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,6 +485,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		200A1A551E57560500521BD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 200A1A511E57560500521BD8 /* Mesonaut's Gym for Watch Extension */;
+			targetProxy = 200A1A541E57560500521BD8 /* PBXContainerItemProxy */;
+		};
+		200A1A661E57560600521BD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 200A1A451E57560500521BD8 /* Mesonaut's Gym for Watch */;
+			targetProxy = 200A1A651E57560600521BD8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		20F0E9E91E45BE7B00C48414 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -308,6 +518,72 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		200A1A691E57560600521BD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L3G5AY77GM;
+				IBSC_MODULE = Mesonaut_s_Gym_for_Watch_Extension;
+				INFOPLIST_FILE = "Mesonaut's Gym for Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "digitalemil.de.Mesonaut-s-Gym.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		200A1A6A1E57560600521BD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L3G5AY77GM;
+				IBSC_MODULE = Mesonaut_s_Gym_for_Watch_Extension;
+				INFOPLIST_FILE = "Mesonaut's Gym for Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "digitalemil.de.Mesonaut-s-Gym.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Release;
+		};
+		200A1A6B1E57560600521BD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Mesonaut's Gym for Watch Extension/Mesonaut's Gym for Watch Extension.entitlements";
+				DEVELOPMENT_TEAM = L3G5AY77GM;
+				INFOPLIST_FILE = "Mesonaut's Gym for Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "digitalemil.de.Mesonaut-s-Gym.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos3.1;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		200A1A6C1E57560600521BD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Mesonaut's Gym for Watch Extension/Mesonaut's Gym for Watch Extension.entitlements";
+				DEVELOPMENT_TEAM = L3G5AY77GM;
+				INFOPLIST_FILE = "Mesonaut's Gym for Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "digitalemil.de.Mesonaut-s-Gym.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos3.1;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
 		20F0E9F21E45BE7B00C48414 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -427,6 +703,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		200A1A6D1E57560600521BD8 /* Build configuration list for PBXNativeTarget "Mesonaut's Gym for Watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				200A1A6B1E57560600521BD8 /* Debug */,
+				200A1A6C1E57560600521BD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		200A1A6F1E57560600521BD8 /* Build configuration list for PBXNativeTarget "Mesonaut's Gym for Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				200A1A691E57560600521BD8 /* Debug */,
+				200A1A6A1E57560600521BD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		20F0E9D51E45BE7B00C48414 /* Build configuration list for PBXProject "Mesonaut's Gym" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -5,6 +5,7 @@ var url= require('url');
 var request = require('request');
 var http = require("http");
 
+
 let modeltopic= "mesonautsgym-model";
 let listener= process.env.LISTENER;
 let modelevaluator= process.env.MODELEVALUATOR;
@@ -104,6 +105,7 @@ router.post('/mail', function(req, res, next) {
 
 router.post('/data', function(req, res, next) {
  let msg= req.body;
+ 
  msg.model= model;
  console.log("Msg: "+ msg);
  let jsonobj= JSON.parse(msg);
@@ -128,6 +130,50 @@ request.post(listener, {form:JSON.stringify(jsonobj)}, function(err, response, b
  });
  
 });
+
+/*
+router.all("/kibana*", function (request, response) {
+    console.log("kibana get: "+request.url);
+    request.url= request.url.substring("/kibana".length+1);
+    console.log("after kibana get: "+request.url);
+   // console.log("target: "+'http://kibana.marathon.l4lb.thisdcos.directory:5601');
+    proxy.web(request, response, { target: 'http://kibana.marathon.l4lb.thisdcos.directory:5601' });
+  });
+
+router.all("/app/kibana*", function (request, response) {
+    console.log("kibana get: "+request.url);
+   // console.log("target: "+'http://kibana.marathon.l4lb.thisdcos.directory:5601');
+    proxy.web(request, response, { target: 'http://kibana.marathon.l4lb.thisdcos.directory:5601' });
+  });
+
+router.all("/bundles*", function (request, response) {  
+   // request.url= "/app/kibana/"+request.url.substring("/app/kibana".length+1);
+    console.log("kibana get: "+request.url);
+   // console.log("target: "+'http://kibana.marathon.l4lb.thisdcos.directory:5601');
+    proxy.web(request, response, { target: 'http://kibana.marathon.l4lb.thisdcos.directory:5601' });
+  });
+
+router.all("/api*", function (request, response) {  
+   // request.url= "/app/kibana/"+request.url.substring("/app/kibana".length+1);
+    console.log("kibana get: "+request.url);
+   // console.log("target: "+'http://kibana.marathon.l4lb.thisdcos.directory:5601');
+    proxy.web(request, response, { target: 'http://kibana.marathon.l4lb.thisdcos.directory:5601' });
+  });
+
+  router.all("/status*", function (request, response) {  
+   // request.url= "/app/kibana/"+request.url.substring("/app/kibana".length+1);
+    console.log("kibana get: "+request.url);
+   // console.log("target: "+'http://kibana.marathon.l4lb.thisdcos.directory:5601');
+    proxy.web(request, response, { target: 'http://kibana.marathon.l4lb.thisdcos.directory:5601' });
+  });
+
+router.all("/elasticsearch*", function (request, response) {  
+   // request.url= "/app/kibana/"+request.url.substring("/app/kibana".length+1);
+    console.log("kibana get: "+request.url);
+   // console.log("target: "+'http://kibana.marathon.l4lb.thisdcos.directory:5601');
+    proxy.web(request, response, { target: 'http://kibana.marathon.l4lb.thisdcos.directory:5601' });
+  });
+*/
 
 module.exports = router;
 

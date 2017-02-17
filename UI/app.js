@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var menu = require('./routes/menu');
+var httpProxy = require('http-proxy');
+var proxy = httpProxy.createProxyServer({});
 
 var app = express();
 
@@ -17,6 +19,19 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(function(req, res, next) {
+  let uri= req.url;
+
+  if(uri.includes("elastic") || uri.includes("kibana") || uri.includes("bundle") || uri.includes("api") || uri.includes("status")) {
+    console.log("Proxy Kibana: "+req.url);
+    proxy.web(req, res, { target: 'http://kibana.marathon.l4lb.thisdcos.directory:5601' });
+  }
+  else {
+    next();
+  }
+});
+
+
 app.use(bodyParser.text({type: '*/*'}));
 app.use(bodyParser.raw());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,6 +39,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+
 app.use('/menu', menu);
 
 // catch 404 and forward to error handler

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController">
+                    <items>
+                        <imageView width="32" height="32" alignment="center" image="mesonaut" id="Tnz-gd-EdS"/>
+                        <label alignment="center" verticalAlignment="center" text="---" textAlignment="center" id="Pkj-cv-wNT">
+                            <fontDescription key="font" type="boldSystem" pointSize="42"/>
+                        </label>
+                        <label alignment="center" verticalAlignment="center" text="BPM" id="JLn-ON-Ek2">
+                            <fontDescription key="font" type="system" pointSize="16"/>
+                        </label>
+                        <button width="1" alignment="center" verticalAlignment="bottom" title="Start" id="ifQ-nE-X65">
+                            <fontDescription key="font" type="system" pointSize="20"/>
+                            <connections>
+                                <action selector="buttonPressed" destination="AgC-eL-Hgc" id="2AC-VR-SfX"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <color key="backgroundColor" red="0.61960784310000006" green="0.28627450980000002" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="bpm" destination="Pkj-cv-wNT" id="2Om-Te-Z4V"/>
+                        <outlet property="button" destination="ifQ-nE-X65" id="cpr-8R-pWV"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+    </scenes>
+</document>
