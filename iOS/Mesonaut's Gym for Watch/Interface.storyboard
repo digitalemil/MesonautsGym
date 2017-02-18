@@ -9,12 +9,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--mesonautw-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController">
+                <controller backgroundImage="mesonautw" id="AgC-eL-Hgc" customClass="InterfaceController">
                     <items>
-                        <imageView width="32" height="32" alignment="center" image="mesonaut" id="Tnz-gd-EdS"/>
                         <label alignment="center" verticalAlignment="center" text="---" textAlignment="center" id="Pkj-cv-wNT">
                             <fontDescription key="font" type="boldSystem" pointSize="42"/>
                         </label>
