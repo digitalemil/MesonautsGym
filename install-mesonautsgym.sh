@@ -24,6 +24,10 @@ echo $1 | awk -F/ '{print $3}'
 fi
 cp config.json config.tmp
 sed -ie "s@PUBLIC_SLAVE_ELB_HOSTNAME@$PUBLICELBHOST@g"  config.tmp
+cp versions/ui-config.json ui-config.tmp
+sed -ie "s@PUBLIC_SLAVE_ELB_HOSTNAME@$PUBLICELBHOST@g"  ui-config.tmp
+
+
 dcos marathon group add config.tmp
 #rm config.tmp
 until $(curl --output /dev/null --silent --head --fail http://$PUBLICELBHOST); do

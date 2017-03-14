@@ -32,7 +32,7 @@ dir ('UI') {
 dir ('PMMLService') { 
  // Build Docker image
         stage 'Build'
-        sh "mvn package"
+ //       sh "mvn package"
         sh "docker build -t digitalemil/mypublicrepo:pmmlservice ."
 
         // Log in and push image to GitLab
@@ -77,6 +77,9 @@ dir ('MesonautsLoad') {
             url: 'http://marathon.mesos:8080',
             forceUpdate: true,
             credentialsId: 'dcos-token',
-            filename: 'config.tmp',
-          )
+            filename: 'marathon.json',
+            id: 'howdy',
+            docker: "digitalemil/mypublicrepo:cicd-howdy-${gitCommit()}".toString()
+        )
+
     }
