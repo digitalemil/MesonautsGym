@@ -27,7 +27,7 @@ dir ('UI') {
             ]]
         ) {
             sh "docker login -u ${env.DOCKERHUB_USERNAME} -p ${env.DOCKERHUB_PASSWORD}"
-            sh "docker push digitalemil/mypublicrepo:mesonautsgym-ui-v1.0.0"
+            sh "docker push digitalemil/mypublicrepo:mesonautsgym-ui-v2.0.0"
         }
 }
 
@@ -39,9 +39,9 @@ dir ('UI') {
             url: 'http://marathon.mesos:8080',
             forceUpdate: true,
             credentialsId: 'dcos-token',
-            filename: 'marathon.json',
-            id: 'howdy',
-            docker: "digitalemil/mypublicrepo:cicd-howdy-${gitCommit()}".toString()
+            filename: 'ui-config.tmp',
+            id: '/dcosappstudio-mesonautsgym/management/ui',
+            docker: 'digitalemil/mypublicrepo:mesonautsgym-ui-v2.0.0'
         )
 
     }
