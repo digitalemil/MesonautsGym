@@ -10,7 +10,7 @@ if [ "$c" = "y" ]; then
 #	dcos package install --yes elasticsearch
 #	read -p "Press any key when the Elastic service is started." -n1 -s
 #	dcos marathon app add kibana.json
-#	read -p "Press any key when the services are started." -n1 -s 
+	read -p "Press any key when the services are started." -n1 -s 
 else
 	echo no
 fi
