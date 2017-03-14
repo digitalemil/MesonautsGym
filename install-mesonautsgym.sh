@@ -5,9 +5,12 @@ if [ "$c" = "y" ]; then
 	./setup-marathon-lb.sh
 	dcos package install --yes cassandra
 	dcos package install --yes kafka
-	dcos package install --yes elasticsearch
-	dcos marathon app add kibana.json
-	read -p "Press any key when the services are started." -n1 -s 
+	dcos package install --yes elastic
+	dcos package install --yes jenkins 
+#	dcos package install --yes elasticsearch
+#	read -p "Press any key when the Elastic service is started." -n1 -s
+#	dcos marathon app add kibana.json
+#	read -p "Press any key when the services are started." -n1 -s 
 else
 	echo no
 fi
@@ -19,7 +22,12 @@ else
 echo $1 | awk -F/ '{print $3}'
 	export PUBLICELBHOST=$(echo $1 | awk -F/ '{print $1}')
 fi
-cp config.json config.tmp
+cp 19config.json config.tmp
 sed -ie "s@PUBLIC_SLAVE_ELB_HOSTNAME@$PUBLICELBHOST@g"  config.tmp
 dcos marathon group add config.tmp
-rm config.tmpe
+rm config.tmp
+until $(curl --output /dev/null --silent --head --fail http://$PUBLICELBHOST); do
+    printf '.'
+    sleep 5
+done
+open http://$PUBLICELBHOST

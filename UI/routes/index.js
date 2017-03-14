@@ -131,49 +131,6 @@ request.post(listener, {form:JSON.stringify(jsonobj)}, function(err, response, b
  
 });
 
-/*
-router.all("/kibana*", function (request, response) {
-    console.log("kibana get: "+request.url);
-    request.url= request.url.substring("/kibana".length+1);
-    console.log("after kibana get: "+request.url);
-   // console.log("target: "+'http://kibana.marathon.l4lb.thisdcos.directory:5601');
-    proxy.web(request, response, { target: 'http://kibana.marathon.l4lb.thisdcos.directory:5601' });
-  });
-
-router.all("/app/kibana*", function (request, response) {
-    console.log("kibana get: "+request.url);
-   // console.log("target: "+'http://kibana.marathon.l4lb.thisdcos.directory:5601');
-    proxy.web(request, response, { target: 'http://kibana.marathon.l4lb.thisdcos.directory:5601' });
-  });
-
-router.all("/bundles*", function (request, response) {  
-   // request.url= "/app/kibana/"+request.url.substring("/app/kibana".length+1);
-    console.log("kibana get: "+request.url);
-   // console.log("target: "+'http://kibana.marathon.l4lb.thisdcos.directory:5601');
-    proxy.web(request, response, { target: 'http://kibana.marathon.l4lb.thisdcos.directory:5601' });
-  });
-
-router.all("/api*", function (request, response) {  
-   // request.url= "/app/kibana/"+request.url.substring("/app/kibana".length+1);
-    console.log("kibana get: "+request.url);
-   // console.log("target: "+'http://kibana.marathon.l4lb.thisdcos.directory:5601');
-    proxy.web(request, response, { target: 'http://kibana.marathon.l4lb.thisdcos.directory:5601' });
-  });
-
-  router.all("/status*", function (request, response) {  
-   // request.url= "/app/kibana/"+request.url.substring("/app/kibana".length+1);
-    console.log("kibana get: "+request.url);
-   // console.log("target: "+'http://kibana.marathon.l4lb.thisdcos.directory:5601');
-    proxy.web(request, response, { target: 'http://kibana.marathon.l4lb.thisdcos.directory:5601' });
-  });
-
-router.all("/elasticsearch*", function (request, response) {  
-   // request.url= "/app/kibana/"+request.url.substring("/app/kibana".length+1);
-    console.log("kibana get: "+request.url);
-   // console.log("target: "+'http://kibana.marathon.l4lb.thisdcos.directory:5601');
-    proxy.web(request, response, { target: 'http://kibana.marathon.l4lb.thisdcos.directory:5601' });
-  });
-*/
 
 module.exports = router;
 
