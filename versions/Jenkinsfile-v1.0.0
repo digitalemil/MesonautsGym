@@ -43,4 +43,12 @@ dir ('UI') {
             docker: 'digitalemil/mypublicrepo:mesonautsgym-ui-v1.0.0'
         )
 
+        marathon(
+            url: 'http://marathon.mesos:8080',
+            forceUpdate: true,
+            credentialsId: 'dcos-token',
+            filename: 'versions/listener-v1.0.0.json',
+            id: '/dcosappstudio-mesonautsgym/message-handler/message-listener',
+            docker: 'digitalemil/mypublicrepo:dcosappstudio-messagelistener-v1.0.0'
+        )
     }
