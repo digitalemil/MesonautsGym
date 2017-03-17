@@ -2,7 +2,6 @@
 read -p "Install services? (y/n) " -n1 -s c
 if [ "$c" = "y" ]; then
 	echo yes
-	./setup-marathon-lb.sh
 	dcos package install --yes cassandra
 	dcos package install --yes kafka
 	dcos package install --yes elastic
@@ -27,9 +26,17 @@ sed -ie "s@PUBLIC_SLAVE_ELB_HOSTNAME@$PUBLICELBHOST@g"  config.tmp
 cp versions/ui-config.json ui-config.tmp
 sed -ie "s@PUBLIC_SLAVE_ELB_HOSTNAME@$PUBLICELBHOST@g"  ui-config.tmp
 
+cp setmodel.template setmodel.sh
+sed -ie "s@PUBLIC_SLAVE_ELB_HOSTNAME@$PUBLICELBHOST@g" setmodel.sh
+rm setmodel.she
+
+cp clearmodel.template clearmodel.sh
+sed -ie "s@PUBLIC_SLAVE_ELB_HOSTNAME@$PUBLICELBHOST@g" clearmodel.sh
+rm clearmodel.she
 
 dcos marathon group add config.tmp
-#rm config.tmp
+rm config.tmpe
+rm ui-config.tmpe 
 until $(curl --output /dev/null --silent --head --fail http://$PUBLICELBHOST); do
     printf '.'
     sleep 5

@@ -41,5 +41,5 @@ export PMML='<?xml version="1.0"?>
 </TreeModel>
 </PMML>'
 echo $PMML>model.tmp
-curl -X POST -d @model.tmp  http://esiemes-e-publicsl-1vm0wocobp01c-1500458912.eu-central-1.elb.amazonaws.com/model
+curl -X POST -d @model.tmp  http://PUBLIC_SLAVE_ELB_HOSTNAME/model
 rm model.tmp
