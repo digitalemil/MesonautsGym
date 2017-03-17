@@ -13,8 +13,16 @@ def gitCommit() {
 dir ('UI') { 
         // Build Docker image
         stage 'Build'
-        sh "docker build -t digitalemil/mypublicrepo:mesonautsgym-ui-v1.0.0 ."
-
+        withCredentials(
+            [[
+                $class: 'UsernamePasswordMultiBinding',
+                credentialsId: 'dockerhub',
+                passwordVariable: 'DOCKERHUB_PASSWORD',
+                usernameVariable: 'DOCKERHUB_USERNAME'
+            ]]
+        ) {
+            sh "docker build -t ${env.DOCKERHUB_USERNAME}/${env.DOCKERHUB_REPO}:mesonautsgym-ui-v1.0.0 ."
+        }
         // Log in and push image to GitLab
         stage 'Publish'
         withCredentials(
@@ -26,21 +34,28 @@ dir ('UI') {
             ]]
         ) {
             sh "docker login -u ${env.DOCKERHUB_USERNAME} -p ${env.DOCKERHUB_PASSWORD}"
-            sh "docker push digitalemil/mypublicrepo:mesonautsgym-ui-v1.0.0"
+            sh "docker push ${env.DOCKERHUB_USERNAME}/${env.DOCKERHUB_REPO}:mesonautsgym-ui-v1.0.0"
         }
 }
 
 
         // Deploy
         stage 'Deploy'
-
+        withCredentials(
+            [[
+                $class: 'UsernamePasswordMultiBinding',
+                credentialsId: 'dockerhub',
+                passwordVariable: 'DOCKERHUB_PASSWORD',
+                usernameVariable: 'DOCKERHUB_USERNAME'
+            ]]
+        ) {
         marathon(
             url: 'http://marathon.mesos:8080',
             forceUpdate: true,
             credentialsId: 'dcos-token',
             filename: 'ui-config.tmp',
             id: '/dcosappstudio-mesonautsgym/management/ui',
-            docker: 'digitalemil/mypublicrepo:mesonautsgym-ui-v1.0.0'
+            docker: '${env.DOCKERHUB_USERNAME}/${env.DOCKERHUB_REPO}:mesonautsgym-ui-v1.0.0'
         )
-
+        }
     }
