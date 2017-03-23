@@ -191,7 +191,7 @@ BizAndSportsModell.prototype.setup = function() {
 	console.log("scale: " + scale + " w: " + width + " h: " + height);
 	
 	this.widgets = new Array(MAXWIDGETS);
-
+	
 	// nx+ ny= MAXWIDGETS
 	// nx*WIDGETWIDTH*ws= width
 	// ny*WIDGETHEIGHT*ws= height- 2*WIDGETHEIGHT*ws
@@ -272,6 +272,8 @@ BizAndSportsModell.prototype.setup = function() {
 	var pos = 0;
 	for ( var layer = 0; layer < 1000; layer++) {
 		for ( var j = 0; j < MAXWIDGETS; j++) {
+			if(this.widgets[j]=== undefined) 
+				continue;
 			pos += this.widgets[j].addThings(allThings, pos, layer);
 		}
 	}
