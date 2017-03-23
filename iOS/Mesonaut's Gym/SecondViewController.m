@@ -386,7 +386,7 @@ int nbpms= 0;
             gettimeofday(&time, NULL);
             long millis = (time.tv_sec * 1000) + (time.tv_usec / 1000);
             
-            hrString = [NSString stringWithFormat:@"{\"id\":\"%li\", \"location\":\"%lf,%lf\", \"event_timestamp\":\"%@\", \"deviceid\":\"%@\", \"user\":\"%@\", \"heartrate\":\"%u\"}", millis, latitude, longitude, dateString, userstr, userstr, userHR];
+            hrString = [NSString stringWithFormat:@"{\"id\":\"%li\", \"location\":\"%lf,%lf\", \"event_timestamp\":\"%@\", \"deviceid\":\"%@\", \"user\":\"%@\", \"heartrate\":\"%u\"}", millis, latitude, longitude, dateString, @"2207", userstr, userHR];
             [self writeHR:hrString];
             if(npc!= nil) {
                 [npc setHeartRate:userHR];
@@ -554,7 +554,7 @@ int nbpms= 0;
         gettimeofday(&time, NULL);
         long millis = (time.tv_sec * 1000) + (time.tv_usec / 1000);
         
-        hrString = [NSString stringWithFormat:@"{\"id\":\"%li\", \"location\":\"%lf,%lf\", \"event_timestamp\":\"%@\", \"deviceid\":\"%@\", \"user\":\"%@\", \"heartrate\":\"%u\"}", millis, latitude, longitude, dateString, userstr, userstr, userHR];
+        hrString = [NSString stringWithFormat:@"{\"id\":\"%li\", \"location\":\"%lf,%lf\", \"event_timestamp\":\"%@\", \"deviceid\":\"%@\", \"user\":\"%@\", \"heartrate\":\"%u\"}", millis, latitude, longitude, dateString, @"2207", userstr, userHR];
         [self writeHR:hrString];
         if(npc!= nil) {
             [npc setHeartRate:userHR];
@@ -821,7 +821,7 @@ int nbpms= 0;
                     gettimeofday(&time, NULL);
                     long millis = (time.tv_sec * 1000) + (time.tv_usec / 1000);
                     
-                    NSString *js= [NSString stringWithFormat:@"{\"id\":\"%li\", \"location\":\"%lf,%lf\", \"event_timestamp\":\"%@\", \"deviceid\":\"%@\", \"user\":\"%@\", \"heartrate\":\"%u\"},\n", millis, 0.0, 0.0, [formatter stringFromDate:quantitySample.startDate], userstr, userstr, userHR];
+                    NSString *js= [NSString stringWithFormat:@"{\"id\":\"%li\", \"location\":\"%lf,%lf\", \"event_timestamp\":\"%@\", \"deviceid\":\"%@\", \"user\":\"%@\", \"heartrate\":\"%u\"},\n", millis, 0.0, 0.0, [formatter stringFromDate:quantitySample.startDate], @"2207", userstr, userHR];
                     [ret appendString:js];
                 }
                 [ret appendString:@"]}"];
