@@ -5,7 +5,7 @@
   "cmd": null,
   "args": null,
   "user": null,
-  "env": null,
+  "env": {"APPDEF":"{'name':'The Mesonauts Gym','showLocation':true,'fields':[{'name':'heartrate','pivot':true,'type':'Integer'},{'name':'user','pivot':false,'type':'String'},{'name':'deviceid','pivot':false,'type':'String'},{'name':'color','pivot':false,'type':'String'},{'name':'id','type':'Long','pivot':'false'},{'name':'location','type':'Location','pivot':'false'},{'name':'event_timestamp','type':'Date/time','pivot':'false'}],'transformer':'%0A%09result%3D%20rawtext%3B%0A%09%09%09%09%09%0A%09%09%09%09%09','topic':'hr','table':'hr','keyspace':'mesonautsgym','path':'mesonautsgym','creator':'http://localhost:3000'}"},
   "instances": 1,
   "cpus": 0.5,
   "mem": 1024,

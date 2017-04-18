@@ -21,10 +21,20 @@ else
 echo $1 | awk -F/ '{print $3}'
 	export PUBLICELBHOST=$(echo $1 | awk -F/ '{print $1}')
 fi
+echo Determing public node ip...
+export PUBLICNODEIP=$(./findpublic_ips.sh | head -1 | sed "s/.$//" )
+echo Public node ip: $PUBLICNODEIP 
+echo ------------------
+
+if [ ${#PUBLICNODEIP} -le 6 ] ;
+then
+	echo Can not find public node ip. JQ in path?
+	exit -1
+fi
 cp config.json config.tmp
-sed -ie "s@PUBLIC_SLAVE_ELB_HOSTNAME@$PUBLICELBHOST@g"  config.tmp
+sed -ie "s@PUBLIC_SLAVE_ELB_HOSTNAME@$PUBLICELBHOST@g; s@PUBLICNODEIP@$PUBLICNODEIP@g;"  config.tmp
 cp versions/ui-config.json ui-config.tmp
-sed -ie "s@PUBLIC_SLAVE_ELB_HOSTNAME@$PUBLICELBHOST@g"  ui-config.tmp
+sed -ie "s@PUBLIC_SLAVE_ELB_HOSTNAME@$PUBLICELBHOST@g; s@PUBLICNODEIP@$PUBLICNODEIP@g;"  ui-config.tmp
 
 cp setmodel.template setmodel.sh
 sed -ie "s@PUBLIC_SLAVE_ELB_HOSTNAME@$PUBLICELBHOST@g" setmodel.sh
@@ -37,8 +47,8 @@ rm clearmodel.she
 dcos marathon group add config.tmp
 rm config.tmpe
 rm ui-config.tmpe 
-until $(curl --output /dev/null --silent --head --fail http://$PUBLICELBHOST); do
+until $(curl --output /dev/null --silent --head --fail http://$PUBLICNODEIP:10000); do
     printf '.'
     sleep 5
 done
-open http://$PUBLICELBHOST
+open http://$PUBLICNODEIP:10000

@@ -13,16 +13,8 @@ def gitCommit() {
 dir ('UI') { 
         // Build Docker image
         stage 'Build'
-        withCredentials(
-            [[
-                $class: 'UsernamePasswordMultiBinding',
-                credentialsId: 'dockerhub',
-                passwordVariable: 'DOCKERHUB_PASSWORD',
-                usernameVariable: 'DOCKERHUB_USERNAME'
-            ]]
-        ) {
-            sh "docker build -t ${env.DOCKERHUB_USERNAME}/${env.DOCKERHUB_REPO}:mesonautsgym-ui-v1.0.0 ."
-        }
+        sh "docker build -t digitalemil/mypublicrepo:mesonautsgym-ui-v2.0.0 ."
+
         // Log in and push image to GitLab
         stage 'Publish'
         withCredentials(
@@ -34,28 +26,39 @@ dir ('UI') {
             ]]
         ) {
             sh "docker login -u ${env.DOCKERHUB_USERNAME} -p ${env.DOCKERHUB_PASSWORD}"
-            sh "docker push ${env.DOCKERHUB_USERNAME}/${env.DOCKERHUB_REPO}:mesonautsgym-ui-v1.0.0"
+            sh "docker push digitalemil/mypublicrepo:mesonautsgym-ui-v2.0.0"
         }
 }
 
 
         // Deploy
         stage 'Deploy'
-        withCredentials(
-            [[
-                $class: 'UsernamePasswordMultiBinding',
-                credentialsId: 'dockerhub',
-                passwordVariable: 'DOCKERHUB_PASSWORD',
-                usernameVariable: 'DOCKERHUB_USERNAME'
-            ]]
-        ) {
+
         marathon(
             url: 'http://marathon.mesos:8080',
             forceUpdate: true,
             credentialsId: 'dcos-token',
             filename: 'ui-config.tmp',
             id: '/dcosappstudio-mesonautsgym/management/ui',
-            docker: '${env.DOCKERHUB_USERNAME}/${env.DOCKERHUB_REPO}:mesonautsgym-ui-v1.0.0'
+            docker: 'digitalemil/mypublicrepo:mesonautsgym-ui-v2.0.0'
         )
-        }
+
+        marathon(
+            url: 'http://marathon.mesos:8080',
+            forceUpdate: true,
+            credentialsId: 'dcos-token',
+            filename: 'versions/elastic.json',
+            id: '/dcosappstudio-mesonautsgym/message-backend/elastic-ingester-backend',
+            docker: 'digitalemil/mypublicrepo:dcosappstudio-elasticingester-v2.0.0'
+        )
+
+         marathon(
+            url: 'http://marathon.mesos:8080',
+            forceUpdate: true,
+            credentialsId: 'dcos-token',
+            filename: 'versions/listener-v2.0.0.json',
+            id: '/dcosappstudio-mesonautsgym/message-handler/message-listener',
+            docker: 'digitalemil/mypublicrepo:dcosappstudio-messagelistener-v2.0.0'
+        )
+
     }

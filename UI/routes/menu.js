@@ -83,7 +83,8 @@ txt= txt.replace(/REPLACE2/g, l2);
 });
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: appdef.name, name:appdef.name });
+  let pn= process.env.PUBLICNODE+":10339";
+  res.render('index', { title: appdef.name, name:appdef.name, publicnode: pn });
 });
 
 

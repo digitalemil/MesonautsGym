@@ -29,6 +29,7 @@ import org.jpmml.evaluator.ModelEvaluator;
 import org.jpmml.evaluator.ModelEvaluatorFactory;
 import org.jpmml.evaluator.NodeClassificationMap;
 import org.jpmml.manager.PMMLManager;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.xml.sax.SAXException;
@@ -39,8 +40,7 @@ import java.io.PrintWriter;
  */
 public class MesonautsGym extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static Logger hrlogger;
-
+	String pivotfieldname= "";
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -51,33 +51,38 @@ public class MesonautsGym extends HttpServlet {
 	@Override
 	public void init(ServletConfig cfg) throws ServletException {
 		super.init(cfg);
-
-
-	hrlogger = Logger
-					.getLogger("de.digitalemil.mesonautsgym.heartrates");
-
-			try {
-				Handler fileHandler = new FileHandler("logs/hrdata.out");
-				LogFormatter formatter = new LogFormatter();
-				fileHandler.setFormatter(formatter);
-				hrlogger.addHandler(fileHandler);
-
-			} catch (SecurityException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
+		System.out.println("Pivot field: "+pivotfieldname);
+		String appdef= "";
+		Map<String, String> env = System.getenv();
+        for (String envName : env.keySet()) {
+			if(envName.equals("APPDEF"))
+				appdef= env.get(envName);
+		}
+		String json= appdef.replaceAll("'", "\"");
+		JSONObject jobj = null;
+		jobj = new JSONObject(json);
+		JSONArray fields= jobj.getJSONArray("fields");
+		for (int i = 0; i < fields.length(); i++) {
+			JSONObject field= fields.getJSONObject(i);	
+			System.out.println(field);
+			System.out.println(field.get("pivot"));
+			
+			if(field.get("pivot").toString().toLowerCase()== "true") {
+				pivotfieldname= field.getString("name");
+				System.out.println("Pivot field: "+pivotfieldname);
 			}
 		}
 
-protected void doGet(HttpServletRequest request,
+	}
+
+	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-			}
+	}
 
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		// Handling Heartrate
 		BufferedReader reader = request.getReader();
 		PrintWriter writer = response.getWriter();
 
@@ -93,25 +98,21 @@ protected void doGet(HttpServletRequest request,
 		String jsonstring= json.toString();
 		jsonstring= URLDecoder.decode(jsonstring.replace("+", "%2B"), "UTF-8").replace("%2B", "+");
 	
-	//	System.out.println("In: "+jsonstring);
-	
-	//	if ( hrlogger != null)
-	//		hrlogger.severe(jsonstring);
 
 		String color= "0x80FFFFFF";
+		
 		try {
 			jobj = new JSONObject(jsonstring);
-			System.out.println("HR: "+jobj.get("heartrate"));
+			System.out.println("Value: "+jobj.get(pivotfieldname));
 	
 			Object modelobj= jobj.get("model");
 			
 			if(modelobj!= null) {
 				String model= modelobj.toString();
 				model= model.replace("'", "\"");
-	//		System.out.println("model: "+model);
 		
 				ModelEvaluator m= setModelString(model);
-				color= getColor(m, model, new Double(jobj.get("heartrate").toString()));
+				color= getColor(m, model, new Double(jobj.get(pivotfieldname).toString()));
 			}
 		} catch (Exception e) {	
 			e.printStackTrace();
@@ -143,15 +144,15 @@ protected void doGet(HttpServletRequest request,
 	//	System.out.println("New model created for: " + modelEvaluator);
 	}
 
-	public String getColor(ModelEvaluator modelEvaluator, String modelString,  Double hr) {
+	public String getColor(ModelEvaluator modelEvaluator, String modelString,  Double value) {
 		if (modelString == null || modelString.length() <= 0
 				|| modelEvaluator == null)
 			return "0x80FFFFFF";
 		Map<FieldName, FieldValue> arguments = new LinkedHashMap<FieldName, FieldValue>();
 		List<FieldName> activeFields = modelEvaluator.getActiveFields();
 		for (FieldName activeField : activeFields) {
-			System.out.println("ActiveField: "+activeField+" "+hr);
-			FieldValue activeValue = modelEvaluator.prepare(activeField, hr);
+			System.out.println("ActiveField: "+activeField+" "+value);
+			FieldValue activeValue = modelEvaluator.prepare(activeField, value);
 			arguments.put(activeField, activeValue);
 		}
 

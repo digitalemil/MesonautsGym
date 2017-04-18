@@ -94,11 +94,12 @@ router.post('/mail', function(req, res, next) {
  let msg= req.body;
  let json= JSON.parse(msg);
  mailOptions.to=json.mailaddress;
- mailOptions.text= 'Please use the following server:\n'+json.server+"\n\nPlease remove any ending /.";
+ let pn= "http://"+process.env.PUBLICNODE+":10339";
+ mailOptions.text= 'Please use the following server:\n'+pn+"\n\nPlease remove any ending /.";
 
  sendMail(mailOptions);
  console.log("Sending mail invite to: "+ json.mailaddress);
- console.log("Content: "+ json.server);
+ console.log("Content: "+ pn);
  
  //console.log("appdef");
 });
