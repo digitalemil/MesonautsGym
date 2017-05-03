@@ -27,42 +27,6 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(function(req, res, next) {
-  var sess = req.session;
-  let inkibana= false;
-  if(sess.inkibana!= null)
-    inkibana= sess.inkibana;
-
-  let uri= req.url;
-  if(inkibana || uri.includes("elastic") || uri.includes("login") || uri.includes("kibana") || uri.includes("bundle") || uri.includes("api") || uri.includes("status")) {
-   
-   if(uri.includes("logout")|| uri.includes("menu") || uri=== "/") {
-     inkibana= false;
-     res.writeHead(301,
-      {Location: '/menu'}
-    );
-    res.end();
-     return;
-   }
-   if(uri.includes("login")) {
-     inkibana= true;
-   }
-   sess.inkibana= inkibana;
-    console.log("Proxy Kibana: "+req.url);
-  //1.8.8  proxy.web(req, res, { target: 'http://kibana.marathon.l4lb.thisdcos.directory:5601' });
-  if(uri.includes("/service/elastic/kibana/")) {
-    req.url= uri.substring("/service/elastic/kibana/".length);
-    console.log("Effective Proxy Kibana: "+req.url);  
-  }
-  
-  proxy.web(req, res, { target: 'http://elastic:changeme@kibana.elastic.l4lb.thisdcos.directory:5601' });
-}
- else {
-    next();
-  }
-});
-
-
 app.use(bodyParser.text({type: '*/*'}));
 app.use(bodyParser.raw());
 app.use(bodyParser.urlencoded({ extended: false }));

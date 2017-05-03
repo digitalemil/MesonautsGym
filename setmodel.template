@@ -41,5 +41,5 @@ export PMML='<?xml version="1.0"?>
 </TreeModel>
 </PMML>'
 echo $PMML>model.tmp
-curl -X POST -d @model.tmp  http://PUBLIC_SLAVE_ELB_HOSTNAME/model
+curl -X POST -d @model.tmp  http://PUBLIC_SLAVE_ELB_HOSTNAME:10000/model
 rm model.tmp

@@ -94,7 +94,7 @@ router.post('/mail', function(req, res, next) {
  let msg= req.body;
  let json= JSON.parse(msg);
  mailOptions.to=json.mailaddress;
- let pn= "http://"+process.env.PUBLICNODE+":10339";
+ let pn= "http://"+process.env.PUBLICNODE+":10000";
  mailOptions.text= 'Please use the following server:\n'+pn+"\n\nPlease remove any ending /.";
 
  sendMail(mailOptions);
